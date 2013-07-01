@@ -18,7 +18,7 @@ class Animal
   def gender
     @gender
   end
-    def favorite_toys
+  def favorite_toys
     @favorite_toys
   end
 

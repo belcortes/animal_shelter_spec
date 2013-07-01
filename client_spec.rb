@@ -9,8 +9,8 @@ class ClientSpec
       @a_name = 'Bob'
       @an_age = 27
       @a_gender = 'male'
-      @animal_list = []
-      @client = Client.new(@a_name, @an_age, @a_gender, @animal_list)
+      @animals = ['Mindy', 'Alex']
+      @client = Client.new(@a_name, @an_age, @a_gender, @animals)
     end
     it 'has a name' do
       @client.name.should eq @a_name
@@ -24,7 +24,17 @@ class ClientSpec
     end
     it 'has a list of animals' do
       @client.animal_list.should be_an_instance_of Array
-      @client.animal_list.should eq @animal_list
+      @client.animal_list.should eq @animals
+    end
+    it "adds animal to animal list" do
+      numAnimals = @animals.length
+      @client.add_animal(0)
+      @client.animal_list.length.should eq (numAnimals + 1) 
+    end
+    it 'removes animal from animal list' do
+      numAnimals = @animals.length
+      @client.remove_animal(0)
+      @client.animal_list.length.should eq (numAnimals - 1) 
     end
   end
 end
